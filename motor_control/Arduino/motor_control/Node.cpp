@@ -9,8 +9,12 @@ void Node::begin() {
   config_.load();
   state_.set_buffer(get_buffer());
   state_.validator_.set_node(*this);
-  state_._.voltage = 0;
-  state_._.frequency = config_._.min_waveform_frequency;
+  state_.reset();
+  state_._.has_motor_position = true;
+  state_._.motor_pulse_us = 20;
+  state_._.has_motor_pulse_us = true;
+  state_._.has_motor_delay_us = true;
+  state_._.has_motor_continuous = true;
   // Start Serial after loading config to set baud rate.
 #if !defined(DISABLE_SERIAL)
   //Serial.begin(config_._.baud_rate);

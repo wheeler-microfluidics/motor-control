@@ -22,6 +22,11 @@ message Config {
 
 
 message State {
-  optional float voltage = 1;
-  optional float frequency = 2;
+  optional bool motor_enabled = 1 [default = false];
+  optional bool motor_direction = 2 [default = false];
+  optional float motor_speed = 3 [default = 0];
+  optional int32 motor_position = 4 [default = 0];
+  optional uint32 motor_pulse_us = 5 [default = 20];
+  optional uint32 motor_delay_us = 6 [default = 1000];
+  optional bool motor_continuous = 7 [default = false];
 }
