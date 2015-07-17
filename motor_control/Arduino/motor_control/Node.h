@@ -73,13 +73,13 @@ public:
     pinMode(MS3_PIN, OUTPUT);
 
     digitalWrite(ENABLE_PIN, HIGH);  // ENABLE_PIN is active LOW
-    set_MS(0);
+    set_MS(0, 0, 0);
   }
 
-  void set_MS(uint8_t ms) {
-    digitalWrite(MS1_PIN, 0x01 & ms);
-    digitalWrite(MS2_PIN, 0x02 & ms);
-    digitalWrite(MS3_PIN, 0x04 & ms);
+  void set_MS(uint8_t ms1, uint8_t ms2, uint8_t ms3) {
+    digitalWrite(MS1_PIN, ms1);
+    digitalWrite(MS2_PIN, ms2);
+    digitalWrite(MS3_PIN, ms3);
   }
 
   UInt8Array get_buffer() { return UInt8Array(sizeof(buffer_), buffer_); }
