@@ -37,6 +37,10 @@ typedef nanopb::EepromMessage<motor_control_Config,
 typedef nanopb::Message<motor_control_State,
                         state_validate::Validator<Node> > state_t;
 
+/* TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
+ * TODO: Test nanopb-helpers library.  Does MessageUpdate support updating
+ * boolean fields properly?
+ * TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO */
 
 class Node :
   public BaseNode,
@@ -109,12 +113,12 @@ public:
       // Pulse the step pin output.
       digitalWrite(STEP_PIN, HIGH);
       delayMicroseconds(state_._.motor_pulse_us);
-      /* TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
+      /* TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
        * TODO: Should *not* delay here, since this method may be called while
        * servicing an interrupt.  See [here][1] for more details.
        *
        * [1]: https://learn.adafruit.com/multi-tasking-the-arduino-part-2/interrupt-etiquette
-       * TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
+       * TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
        */
       digitalWrite(STEP_PIN, LOW);
       state_._.motor_position += (state_._.motor_direction) ? 1 : -1;
@@ -156,6 +160,8 @@ public:
       if (state_._.motor_delay_us > 0) { disable_timer(); }
       enable_timer(new_value);
       state_._.motor_delay_us = new_value;
+      /* TODO: Is it necessary to mark this attribute manually? If so, when is
+       * it required? */
       state_._.has_motor_delay_us = true;
     }
     return true;
