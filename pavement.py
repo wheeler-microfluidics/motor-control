@@ -19,7 +19,10 @@ PROJECT_PREFIX = [d for d in path('.').dirs()
                   and d.name not in ('build', )][0].name
 name = PROJECT_PREFIX.replace('_', '-')
 package_name = 'wheeler.' + name
-rpc_module = import_module(PROJECT_PREFIX)
+try:
+    rpc_module = import_module(PROJECT_PREFIX)
+except ImportError:
+    rpc_module = None
 VERSION = version.getVersion()
 URL='http://github.com/wheeler-microfluidics/%s.git' % name
 PROPERTIES = OrderedDict([('name', PROJECT_PREFIX),
