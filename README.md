@@ -1,4 +1,3 @@
-![https://ci.appveyor.com/api/projects/status/github/wheeler-microfluidics/motor-control?branch=master&svg=true](https://ci.appveyor.com/api/projects/status/github/wheeler-microfluidics/motor-control?branch=master&svg=true)
 # motor-control #
 Control package for OpenDrop Digital Microfluidics Platform
 
